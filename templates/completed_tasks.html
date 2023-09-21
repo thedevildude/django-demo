@@ -1,0 +1,2 @@
+<h1>Completed Task</h1>
+{% if tasks %} {% for task in tasks %} {{forloop.counter}}. {{task.title}} {{task.created_date}} </br> {% endfor %} {% else %} <p>There are no completed tasks</p> {% endif %}

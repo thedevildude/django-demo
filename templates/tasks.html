@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% block title %}View Tasks{% endblock %} 
+{% block content %}
+<h1>Task Management Application</h1>
+<a href="../completed_tasks" >Completed Tasks</a>
+
+<h2>Search Tasks</h2>
+{{request.current_time}}
+
+<form method="get">
+    <input type="text" name="search">
+    <button type="submit">Search</button>
+</form>
+
+{% for task in tasks %} {{forloop.counter}}. {{task.title}} {{task.created_date}} <a href="../complete_task/{{task.id}}">Complete</a> <a href="../delete-task/{{task.id}}">delete</a> <a href="../update-task/{{task.id}}">update</a> </br> {% endfor %}
+
+{% for page in paginator.page_range %}
+<li>
+    <a href="?page={{page}}&search={{request.GET.search}}">{{page}}</a>
+</li>
+{% endfor %}
+{% endblock %}
